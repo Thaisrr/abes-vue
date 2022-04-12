@@ -7,8 +7,13 @@
   </div>
 
   <div class="container">
-    <CardObj v-for="movie of movies" :key="movie" :film="movie"/>
-    <CardObj  />
+    <CardObj
+        v-for="movie of movies"
+        :key="movie"
+        :film="movie"
+        @delete="deleteMovie"
+    />
+    <CardObj @delete="deleteMovie" />
   </div>
 
   <p>Un bouton : <SuperButton :action="() => {}">Ne cliquez pas ici</SuperButton></p>
@@ -43,6 +48,18 @@ export default {
           new Film('Le Seigneur des Anneaux 3', 'Peter Jackson', true),
           new Film('Le Seigneur des Anneaux 4', 'Peter Jackson', false),
       ]
+    }
+  },
+  methods: {
+    deleteMovie(movie, message) {
+      console.log(message)
+      const index = this.movies.indexOf(movie);
+      console.log(index)
+      if(index <= 0) {
+        alert(`Ce film n'existe pas`)
+      } else {
+        this.movies.splice(index, 1);
+      }
     }
   }
 }
