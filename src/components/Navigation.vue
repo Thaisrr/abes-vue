@@ -6,6 +6,9 @@
     <li>
       <router-link :to="{name: 'binding'}">Data Binding</router-link>
     </li>
+    <li>
+      <router-link :to="{name: 'com'}">Communication</router-link>
+    </li>
   </ul>
 </template>
 
