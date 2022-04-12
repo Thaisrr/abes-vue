@@ -4,7 +4,7 @@
 
   <h2>Evenements</h2>
   <p>Mon compteur est à {{count}}</p>
-  <p @mouseover="console.log('coucou')">10 + 10 = {{10 + 10}}</p>
+  <p>10 + 10 = {{10 + 10}}</p>
   <p>
     <button v-on:click="incrementCounter">Incrémenter</button>
     <button @click="incrementCounter">Incrémenter</button>
