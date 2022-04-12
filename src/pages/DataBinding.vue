@@ -11,6 +11,15 @@
     <input v-model="user.nom">
   </p>
 
+  <p>{{fullname}}</p>
+  <ul>
+    <li>Prénom : {{firstname}}</li>
+    <li>Nom : {{lastname}}</li>
+  </ul>
+  <p>
+    <input v-model="fullname">
+  </p>
+
 </template>
 
 <script>
@@ -23,7 +32,9 @@ export default {
         user: {
           nom: 'Toto',
           role: 'ADMIN'
-        }
+        },
+        firstname: 'John',
+        lastname: 'Doe'
       }
   },
   methods: {
@@ -40,6 +51,20 @@ export default {
     getUserClass() {
       console.log('get class computed')
       return (this.user.role === 'ADMIN')? 'blue' : 'red';
+    },
+    fullname: {
+      get() {
+          return this.firstname + ' ' + this.lastname;
+      },
+      set(value) {
+        // Version "Old School"
+        const tab_values = value.split(' ');
+        this.firstname = tab_values[0];
+        this.lastname = tab_values[1];
+
+        // Version destructurée
+        [this.firstname, this.lastname] = value.split(' ');
+      }
     }
   },
   watch: {
