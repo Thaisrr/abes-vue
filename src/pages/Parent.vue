@@ -10,15 +10,30 @@
     <CardObj v-for="movie of movies" :key="movie" :film="movie"/>
     <CardObj  />
   </div>
+
+  <p>Un bouton : <SuperButton :action="() => {}">Ne cliquez pas ici</SuperButton></p>
+
+  <h2>Structure de page : </h2>
+  <PageStructure>
+    <template v-slot:header>
+      <h3>Mon header</h3>
+    </template>
+    <template v-slot:main>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium commodi consequuntur doloribus eligendi enim est iure laborum minima nulla, quod voluptatem voluptatibus? Ad culpa debitis eaque fugit praesentium, quod sed.</p>
+    </template>
+  </PageStructure>
+
 </template>
 
 <script>
 import CardComponent from "@/components/Card";
 import {Film} from "@/models/Film";
 import CardObj from "@/components/CardObj";
+import SuperButton from "@/components/SuperButton";
+import PageStructure from "@/components/PageStructure";
 export default {
   name: "ParentComponent",
-  components: {CardObj, CardComponent},
+  components: {PageStructure, SuperButton, CardObj, CardComponent},
   data() {
     return {
       films: [`Le Seigneur des Anneaux`, `L'Empire contre attaque`, `La Ligne Verte`],
