@@ -5,14 +5,16 @@
 </template>
 
 <script>
+import {Film} from "@/models/Film";
+
 export default {
   name: "CardObj",
   props: {
     film: {
-      type: Object,
+      type: Film,
       required: true,
       default() {
-        return {title: "Inconnu", director: "inconnu", is_watched: false}
+        return new Film('Inconnu', 'Anonyme', false);
       }
     }
   },
