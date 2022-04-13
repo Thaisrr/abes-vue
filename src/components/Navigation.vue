@@ -15,6 +15,9 @@
     <li>
       <router-link :to="{name: 'parent-form'}">Formulaires Bis</router-link>
     </li>
+    <li>
+      <router-link :to="{name: 'data'}">Données</router-link>
+    </li>
   </ul>
 </template>
 
