@@ -18,11 +18,22 @@
     <li>
       <router-link :to="{name: 'data'}">Données</router-link>
     </li>
+    <li>
+      <router-link :to="{name: 'store'}">Les Stores</router-link>
+    </li>
+    <li>
+      <p>Panier Icone : {{basket}}</p>
+    </li>
   </ul>
 </template>
 
 <script>
+  import {mapGetters} from "vuex";
+
   export default {
     name: 'NavigationComponent',
+    computed: {
+      ...mapGetters({basket: 'panier_length'})
+    }
   }
 </script>

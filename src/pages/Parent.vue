@@ -50,6 +50,15 @@ export default {
       ]
     }
   },
+  /*provide: {
+    message: 'Coucou du parent'
+  },*/
+  provide() {
+    return {
+      films: this.films,
+      message: 'Coucou du parent'
+    }
+  },
   methods: {
     deleteMovie(movie, message) {
       console.log(message)

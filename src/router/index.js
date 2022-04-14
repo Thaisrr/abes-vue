@@ -12,4 +12,15 @@ const router = createRouter({
     routes
 })
 
+router.beforeEach((to, from, next) => {
+    const is_authenticated = true; // information à récupérer via service, store...
+    const authorized_routes = ['login', 'home'];
+    if(to.meta.mustBeAdmin) {
+        console.log('Route bloquée : doit être admin')
+    }
+    if( !authorized_routes.includes(to.name) && !is_authenticated ) {
+        next({name: 'login'})
+    } else next();
+})
+
 export default router;

@@ -1,5 +1,6 @@
 <template>
   <NavigationComponent/>
+  <HeaderComponent/>
   <router-view/>
 
   <footer>
@@ -10,9 +11,24 @@
 <script>
 
 import NavigationComponent from "@/components/Navigation";
+import HeaderComponent from "@/components/Header";
+import {mapGetters} from "vuex";
+import {coucou} from "@/tools/service/test.service";
 export default {
   name: 'App',
-  components: {NavigationComponent}
+  components: {HeaderComponent, NavigationComponent},
+  computed: {
+    ...mapGetters({panier: 'panier'})
+  },
+  mounted() {
+    // dispatch : pour les actions
+      this.$store.dispatch('getJoke');
+      this.$store.commit('recupPanier');
+      coucou();
+  },
+  beforeUnmount() {
+    localStorage.setItem('panier', this.panier.join('|') )
+  }
 }
 </script>
 
